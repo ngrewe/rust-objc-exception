@@ -1,6 +1,9 @@
 #include <objc/objc.h>
+#if __has_include("objc/NSObject.h")
 #include <objc/NSObject.h>
-
+#else
+#include <Foundation/NSObject.h>
+#endif
 void RustObjCExceptionThrow(id exception) {
     @throw exception;
 }
