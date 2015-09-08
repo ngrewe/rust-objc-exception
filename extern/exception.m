@@ -1,9 +1,24 @@
 #include <objc/objc.h>
 #if __has_include("objc/NSObject.h")
 #include <objc/NSObject.h>
-#else
+#elif __has_include("Foundation/NSObject.h")
 #include <Foundation/NSObject.h>
+#else
+@interface NSObject
+{
+  Class isa;
+}
+- (id)retain;
+@end
+
+@implementation NSObject
+- (id)retain
+{
+	return self;
+}
+@end
 #endif
+
 void RustObjCExceptionThrow(id exception) {
     @throw exception;
 }
