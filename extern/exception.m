@@ -10,13 +10,6 @@
 }
 - (id)retain;
 @end
-
-@implementation NSObject
-- (id)retain
-{
-	return self;
-}
-@end
 #endif
 
 void RustObjCExceptionThrow(id exception) {
